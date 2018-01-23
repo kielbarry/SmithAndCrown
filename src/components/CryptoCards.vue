@@ -60,7 +60,11 @@ export default {
             }
           }
 
-           console.log(d.organization)
+          if(key === "cardano") {
+            d.homepage = "https://github.com/input-output-hk/cardano-sl";
+          }
+
+           console.log(d)
 
           var newObj = {
             name: d.name,

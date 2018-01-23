@@ -2,7 +2,9 @@
   <div>
 
     <img v-bind:src="coin.avatar" style="z-index:999; width: 50px; height: 50px">
-
+    <div style="z-index:999; position:relative;" v-on:click='openWindow()'>
+        <a> {{ coin.name}}'s Home Page </a>
+      </div>
     <info-card
       :frontType="'text'"
       :frontTitle="createTitle()"
@@ -10,10 +12,6 @@
       :backType="'graph'"
       :backTitle="back.title"
       :backData="coin.graphData" />
-      <div style="z-index:999; position:relative; top: 100px" v-on:click='openWindow()'>
-        <a> {{ coin.homepage}}'s Home Page </a>
-      </div>
-
   </div>
 </template>
 
@@ -44,14 +42,13 @@ export default {
       '<div>Last Updated: <b>' + this.coin.lastUpdate + '</b></div>' + 
       '<div>Written in: <b>' + this.coin.language + '</b></div>' +
       '<div>Number of stars: <b>' + this.coin.stars + '</b></div>' +
-      "<a :xlink:special="+ this.coin.homepage + "></a>" +
       '<div><a text="Homepage" v-bind:href=' + this.coin.homepage + '></a></div';
     },
     createTitle() {
       return "coin: " + this.coin.crypto + "; program: " + this.coin.name;
     },
     openWindow(){
-      window.open(this.coin.baseUrl.replace('/api.', '/').replace('/repos/', '/'), '_blank')
+      window.open(this.coin.homepage, '_blank');
     }
   }
 };
