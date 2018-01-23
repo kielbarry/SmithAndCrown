@@ -1,13 +1,12 @@
 <template>
   <div>
-    <info-card 
+    <info-card
       :frontType="'text'"
       :frontTitle="createTitle()"
       :frontData="calculate()"
       :backType="'graph'"
       :backTitle="back.title"
       :backData="coin.graphData" />
-
       <div style="z-index:999; position:relative; top: 20px" v-on:click='openWindow()'>
         <a> {{ coin.name}}'s Github </a>
       </div>
@@ -34,10 +33,10 @@ export default {
   methods: {
     calculate() {
       var count = this.coin.stargazers_count
-      return '<div>Created on: ' + this.coin.createdAt + '</div>' +
-      '<div>Last Updated: ' + this.coin.lastUpdate + '</div>' + 
-      '<div>Written in: ' + this.coin.language + '</div>' +
-      '<div>Number of stars: ' + this.coin.stars + '</div>';
+      return '<div>Created on: <b>' + this.coin.createdAt + '</b></div>' +
+      '<div>Last Updated: <b>' + this.coin.lastUpdate + '</b></div>' + 
+      '<div>Written in: <b>' + this.coin.language + '</b></div>' +
+      '<div>Number of stars: <b>' + this.coin.stars + '</b></div>';
     },
     createTitle() {
       return "coin: " + this.coin.crypto + "; program: " + this.coin.name;
@@ -48,3 +47,4 @@ export default {
   }
 };
 </script>
+

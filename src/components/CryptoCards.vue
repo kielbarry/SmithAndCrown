@@ -61,7 +61,7 @@ export default {
             fork: d.fork,
             stars: d.stargazers_count,
             language: d.language,
-            graphData: [1,23,14,14]
+            graphData: []
           };
 
           this.$http.get(newObj.baseUrl + '/stats/code_frequency').then((resp) => {
@@ -97,7 +97,6 @@ a {
   border-color: black;
   margin-top: 100px;
   margin-bottom: 20px;
-
   z-index: 999;
   position: relative;
 }
