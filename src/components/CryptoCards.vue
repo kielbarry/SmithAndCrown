@@ -52,9 +52,24 @@ export default {
           var cd = new Date(d.created_at);
           var lu = new Date(d.updated_at);
 
+         
+
+          if(key === "litecoin") {
+            d.organization = {
+              avatar_url : "http://bit.ly/2E66s2l"
+            }
+          }
+
+           console.log(d.organization)
+
           var newObj = {
             name: d.name,
             crypto: key,
+            description: d.description,
+            avatar: d.organization.avatar_url,
+            openIssues: d.open_issues,
+            forks: d.forks,
+            homepage: d.homepage,
             baseUrl: this.urlObject[key],
             lastUpdate: (lu.getMonth() + 1) + "/" + (lu.getDay() + 1)  + "/" + lu.getFullYear(),
             createdAt: (cd.getMonth() + 1) + "/" + (cd.getDay() + 1) + "/" + cd.getFullYear(),
@@ -63,6 +78,8 @@ export default {
             language: d.language,
             graphData: []
           };
+
+          // console.log(newObj)
 
           this.$http.get(newObj.baseUrl + '/stats/code_frequency').then((resp) => {
             resp.data.splice(0,12).reverse().map(arr => {
